@@ -1,0 +1,29 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand(href='#')
+    img.d-inline-block.align-top(src='/images/logo.jpeg' width='70' height='70' alt='')
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarText' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarText.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='/')
+          | Home 
+          span.sr-only (current)
+      li.nav-item
+        a.nav-link(href='/assign') Assign task
+      li.nav-item
+        a.nav-link(href='/remove') Delete Task
+      li.nav-item
+        a.nav-link(href='/viewUser') View staffs
+      li.nav-item
+        a.nav-link(href='/graph') view graph 
+      li.nav-item
+        a.nav-link(href='/addTask') add task list
+      li.nav-item
+        a.nav-link(href='/updateWeight') update Weight
+      li.nav-item
+        a.nav-link(href='/signup') Signup
+      li.nav-item
+        a.nav-link(href='/login') Login
+      li.nav-item
+        a.nav-link(href='/me') About me
