@@ -5,25 +5,42 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     span.navbar-toggler-icon
   #navbarText.collapse.navbar-collapse
     ul.navbar-nav.mr-auto
-      li.nav-item.active
-        a.nav-link(href='/')
-          | Home 
-          span.sr-only (current)
-      li.nav-item
-        a.nav-link(href='/assign') Assign task
-      li.nav-item
-        a.nav-link(href='/remove') Delete Task
-      li.nav-item
-        a.nav-link(href='/viewUser') View staffs
-      li.nav-item
-        a.nav-link(href='/graph') view graph 
-      li.nav-item
-        a.nav-link(href='/addTask') add task list
-      li.nav-item
-        a.nav-link(href='/updateWeight') update Weight
-      li.nav-item
-        a.nav-link(href='/signup') Signup
-      li.nav-item
-        a.nav-link(href='/login') Login
-      li.nav-item
-        a.nav-link(href='/me') About me
+      if(cookies)
+        if(user.roles==="admin")
+          li.nav-item.active
+            a.nav-link(href='/')
+              | Home 
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='/assign') Assign task
+          li.nav-item
+            a.nav-link(href='/remove') Delete Task
+          li.nav-item
+            a.nav-link(href='/viewUser') View staffs
+          li.nav-item
+            a.nav-link(href='/graph') view graph 
+          li.nav-item
+            a.nav-link(href='/addTask') add task list
+          li.nav-item
+            a.nav-link(href='/updateWeight') update Weight
+          
+          li.nav-item
+            a.nav-link(href='/me') about me
+
+        if(user.roles==="staff")
+          li.nav-item.active
+            a.nav-link(href='/')
+              | Home 
+              span.sr-only (current)
+          li.nav-item
+            a.nav-link(href='/me') about me
+      else 
+        li.nav-item.active
+            a.nav-link(href='/')
+              | Home 
+        li.nav-item
+          a.nav-link(href='/signup') Signup 
+        li.nav-item
+          a.nav-link(href='/login') Sign in
+      
+      

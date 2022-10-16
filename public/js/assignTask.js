@@ -1,6 +1,6 @@
 
 
-const assignTask= async (staffId,task,weight)=>
+const assignTask= async (staffId,task)=>
 {
     try{
         const res = await axios ({
@@ -8,7 +8,7 @@ const assignTask= async (staffId,task,weight)=>
             method:'PATCH',
             url:'http://127.0.0.1:8000/api/v1/user/assignTandW',
             data :{
-                staffId,task,weight
+                staffId,task
                 }
         })
 
@@ -19,10 +19,9 @@ document.querySelector('.form--assign').addEventListener('submit',e=>{
     e.preventDefault();
    const staffId= document.getElementById('staffId').value;
    const task= document.getElementById('task').value;
-   const weight= document.getElementById('weight').value;
-   console.log(staffId, task , weight)
-   const weight1=parseInt(weight);
-assignTask(staffId,task,weight1)
+  
+   
+assignTask(staffId,task)
 window.alert("assigned successfully")});
 
 

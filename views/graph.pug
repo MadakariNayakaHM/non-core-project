@@ -14,6 +14,11 @@ head
     margin-right:10px;
     float: left;
     }
+    .verticaltext{
+     
+      transform:rotate(90deg);
+      transform-origin:left top 0;
+    }
     .progress-bar-vertical .progress-bar {
     width: 100%;
     height: 0;
@@ -26,7 +31,7 @@ include navbar
 .container
   each u in users
     .col.ml-2
-      p=u.staffId
+      p(class="verticaltext")=u.staffId
       .progress.progress-bar-vertical
         .progress-bar(role='progressbar' aria-valuenow=`${u.sum}` aria-valuemin='0' aria-valuemax='100' style=`height:${u.sum}%`)
       p=u.sum

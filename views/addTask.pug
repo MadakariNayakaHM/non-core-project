@@ -71,10 +71,7 @@ section.background-radial-gradient.overflow-hidden
                 select#task.form-control.form-control-lg(name='task' placeholder="enter weight"  style='width:50%; display:block; height:auto; margin:auto')
                   each t in tw
                     option=t.task
-              .form-outline.mb-4
-                select#weight.form-control.form-control-lg(name='weight' style='width:50%; display:block; height:auto; margin:auto')
-                  each t in tw
-                    option=t.weight
+
               button.btn.btn-primary.btn-block.mb-4(type='submit')
                 | Assign
 // Section: Design Block

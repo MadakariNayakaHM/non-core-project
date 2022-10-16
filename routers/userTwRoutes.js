@@ -9,6 +9,5 @@ router.route('/deleteTandW').patch(authController.protect,authController.ristric
 
 router.route('/viewUsers').get(authController.protect,authController.ristrictTo('admin'),authController.viewAllusers);
 router.route('/aboutMe').get(authController.protect,authController.aboutMe);
-router.route('/searchUser').post(authController.protect,authController.ristrictTo('admin'),authController.searchOneUser);
 
 module.exports = router;

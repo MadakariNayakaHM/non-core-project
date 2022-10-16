@@ -10,7 +10,6 @@ router.route('/me').get(authController.protect,viewController.aboutMePage);
 router.route('/viewUser').get(authController.protect,authController.ristrictTo("admin"),viewController.viewUserPug);
 router.route('/assign').get(authController.protect,authController.ristrictTo("admin"),viewController.assignTaskPug);
 router.route('/remove').get(authController.protect,authController.ristrictTo("admin"),viewController.deleteTaskPug);
-// router.route('/search').get(authController.protect,authController.ristrictTo("admin"),viewController.searchUser);
 router.route('/graph').get(authController.protect,authController.ristrictTo("admin"),viewController.graphPug);
 router.route('/addTask').get(authController.protect,authController.ristrictTo("admin"),viewController.addTaskList);
 router.route('/updateWeight').get(authController.protect,authController.ristrictTo("admin"),viewController.updateWeight);

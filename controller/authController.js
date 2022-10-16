@@ -1,10 +1,12 @@
 const User = require("./../models/userTandW");
+const TW= require('./../models/taskWeight');
 const jwt = require("jsonwebtoken");
 const util=require('util');
 const { promisify } = require("util");
 const crypto=require('crypto');
 const { json } = require("express/lib/response");
 const { remove } = require("./../models/userTandW");
+const Email= require('../email');
 
 
 const signToken = (id) => {
@@ -52,7 +54,8 @@ exports.signUp = async (req, res, next) => {
     });
 
     const token = signToken(newUser._id);
-    
+    const url=`${req.protocol}://${req.get('host')}/login`
+    await new Email(newUser,url).sendWelcome();
     
     res
       .status(201)
@@ -111,7 +114,7 @@ exports.protect = async (req, res, next) => {
     ).catch((err) => {
       res.render("protect");;
     });
-    // const decoded=jwt.verify(token,process.env.JWT_SECRET,function(err,decoded){return decoded.id});
+    
 
     next();
   } catch (err) {
@@ -158,7 +161,18 @@ exports.assignTaskAndWeight= async (req,res,next)=>
     try
     {
         const staffId=req.body.staffId;
-    const user= await User.findOne({staffId:staffId})
+        const task = req.body.task;
+        console.log(task)
+  const user= await User.findOne({staffId:staffId})
+  const Task = await TW.find();
+let weight1;
+  for(i=0;i<Task.length;i++)
+  {
+    if(Task[i].task==task)
+      weight1=Task[i].weight;
+    
+  }
+ 
     if(!user)
     {
         res.status(404).json({
@@ -170,9 +184,10 @@ exports.assignTaskAndWeight= async (req,res,next)=>
     const date = new Date(dobj).getDate();
     const month=new Date(dobj).getMonth();
     const year=new Date(dobj).getFullYear();
+    
     const TaskandWeight={
       task:req.body.task,
-      weight:req.body.weight,
+      weight:weight1,
       assignedOn:`${date}/${month}/${year}`,
       Active:1
     }
@@ -290,21 +305,3 @@ exports.deleteTaskAssigned = async (req,res,next)=>
   }
 }
 
-exports.searchOneUser=async (req,res,next)=>{
-  try
-  {
-    const staffId= req.body.staffId;
-    const user=await User.findOne({staffId:staffId});
-    console.log(user);
-    if(!user)
-      res.status(400).json({status:"fail",message:"user not found"});
-
-  res.status(200).render('searchUser',{user});
-
-  }
-  catch(e)
-  {
-    console.log(e);
-    console.log("error at search one user")
-  }
-}
