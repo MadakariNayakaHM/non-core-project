@@ -91,3 +91,24 @@ exports.updateWeight= async (req,res,next)=>
 {   const task=await TW.find();
     res.status(200).render('updateWeight',{task});
 }
+exports.searchuser=async (req,res,next)=>
+{
+    const user= await User.find();
+   
+    // const users= await User.findOne({staffId:req.body.staffId})
+    // console.log(users)
+    res.status(200).render('searchuser',{user});
+}
+
+exports.optimiseTask= async (req,res,next)=>
+{
+    res.status(200).render('optimise');
+}
+
+exports.getdetails= async (req,res, next)=>
+{
+    const user = await User.findOne({staffId:req.params.name});
+    console.log(user);
+    res.status(200).render('userOne',{user});
+    next()
+}

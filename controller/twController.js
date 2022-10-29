@@ -16,7 +16,6 @@ exports.updateWeight= async (req,res,next)=>
     console.log(updatedTask.weight)
     const user= await User.find();
     const tw= await TW.find();
-    // console.log(task.weight)
     for(i=0;i<user.length;i++)
     {
         

@@ -13,9 +13,10 @@ table.table.align-middle
       th(scope='col') Name
       th(scope='col') Phone 
       th(scope='col') Email
-      th(scope='col') Assigned task
+      th(scope='col') Assigned-task
       th(scope='col') Weightage
-      th(scope='col') deleted task
+      th(scope='col') deleted-task
+      th(scope='col') view-user
     each u in user
         tbody
             tr
@@ -53,7 +54,8 @@ table.table.align-middle
                             p.dropdown-item(href='#')=ui.task
                         
                             span(style="color:red")=ui.deletedOn
-
+            td 
+                a(href=`/user/${u.staffId}`) view-user
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
 script(src='https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')

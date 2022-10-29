@@ -305,3 +305,23 @@ exports.deleteTaskAssigned = async (req,res,next)=>
   }
 }
 
+exports.searchuser=async (req,res,next)=>{
+  try{
+    const staffId=req.body.staffId;
+    console.log(staffId)
+
+    const users = await User.findOne({staffId:staffId})
+  
+ 
+    
+    
+   res.status(200).json({data:{user}})
+   
+
+  }
+  catch(e)
+  { 
+    console.log("error in searching")
+    console.log(e);
+  }
+}
