@@ -191,13 +191,30 @@ let weight1;
       assignedOn:`${date}/${month}/${year}`,
       Active:1
     }
-   user.taw.push(TaskandWeight);
+    count=0;
+    for(i=0;i<user.taw.length;i++)
+    {
+      if(user.taw[i].task==task && user.taw[i].Active==1)
+      {
+        count+=1;
+      }
+    }
+    console.log(count)
+   if(count==0)
+   {
+    user.taw.push(TaskandWeight);
    
     user.save()
     res.status(200).json({
       status:"success",
       message:user
     })
+    
+   }
+   else if(count!==0)
+   {
+    res.status(404).json({status:"fail",message:"that task is already assigned to the user"})
+   }
     }
 
   

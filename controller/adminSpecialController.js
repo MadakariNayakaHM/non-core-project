@@ -15,20 +15,39 @@ exports.optimiseTask = async (req, res, next) => {
       for (j = i + 1; j < user.length; j++) {
         if (user[j].sum < currentUser.sum && user[i].sum >15) {
           var minWeightIndex;
-          var min =user[i].taw[0].weight;
+           var min;
+          for(p=0;p<currentUser.taw.length;p++)
+          {
+            if(currentUser.taw[p].Active==1)
+            {
+              min = currentUser.taw[p].weight;
+              break;
+            }
+             
+          }
           
 
           for (k = 0; k < user[i].taw.length; k++) 
           {
-            if (min < user[i].taw[k].weight && user[i].taw[k].Active == 1) 
+            if (min > user[i].taw[k].weight && user[i].taw[k].Active == 1) 
             {
               min = user[i].taw[k].weight;
               minWeightIndex = k;
             }
           }
         //   console.log(minWeightIndex)
+        count=0;
+    for(o=0;o<user[j].taw.length;o++)
+    {
+      if(user[j].taw[o].task==user[i].taw[minWeightIndex].task && user[j].taw[o].Active==1)
+      {
+        count+=1;
+      }
+    }
 
-          if(minWeightIndex)
+          if(count==0)
+          {
+            if(minWeightIndex)
           {
             const dobj = Date.now();
           const date = new Date(dobj).getDate();
@@ -51,6 +70,7 @@ exports.optimiseTask = async (req, res, next) => {
           await user[j-1].save();
 
           
+          }
           }
           break;
         }

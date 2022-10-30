@@ -48,9 +48,21 @@ exports.aboutMePage= async (req,res,next)=>
 }
 exports.viewUserPug= async (req,res,next)=>
 {
+    let cookies
+    if(req.cookies.jwt)
+    {
+        cookies=req.cookies.jwt;
+    }
+    if(!req.cookies.jwt)
+    {
+        res.status(400).json({status:"fail",
+        message:"error at about me "})
+    }
+    const userid = jwt.verify(cookies,process.env.JWT_SECRET,(err , decoded)=>{return decoded.id})
+    const users=await User.findById(userid);
     const user=await User.find();
     
-    res.status(200).render("viewUser",{user});
+    res.status(200).render("viewUser",{user , users});
 }
 exports.assignTaskPug= async (req,res,next)=>
 {
@@ -60,7 +72,7 @@ exports.assignTaskPug= async (req,res,next)=>
 }
 exports.deleteTaskPug= async (req,res,next)=>
 {
-   
+    console.log(req.body.staffId);
     const users= await User.find();
     const tw=await TW.find();
     res.status(200).render("deleteTask",{users,tw});
@@ -91,15 +103,6 @@ exports.updateWeight= async (req,res,next)=>
 {   const task=await TW.find();
     res.status(200).render('updateWeight',{task});
 }
-exports.searchuser=async (req,res,next)=>
-{
-    const user= await User.find();
-   
-    // const users= await User.findOne({staffId:req.body.staffId})
-    // console.log(users)
-    res.status(200).render('searchuser',{user});
-}
-
 exports.optimiseTask= async (req,res,next)=>
 {
     res.status(200).render('optimise');
