@@ -6,7 +6,7 @@ const signup= async (name,email,staffId,phone,password,confirmPassword)=>
         const res = await axios ({
 
             method:'POST',
-            url:'http://127.0.0.1:8080/api/v1/user/signup',
+            url:'http://127.0.0.1:9000/api/v1/user/signup',
             data :{
                 name,email,staffId,phone,password,confirmPassword}
         })
