@@ -6,7 +6,7 @@ const optimiseTask= async ()=>
         const res = await axios ({
 
             method:'PATCH',
-            url:'http://127.0.0.1:9000/api/v1/admin/optimise',
+            url:'/api/v1/admin/optimise',
             data :{
              
                 }

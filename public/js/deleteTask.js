@@ -6,7 +6,7 @@ const removeTask= async (staffId,task)=>
         const res = await axios ({
 
             method:'PATCH',
-            url:'http://127.0.0.1:9000/api/v1/user/deleteTandW',
+            url:'/api/v1/user/deleteTandW',
             data :{
                 staffId,task
                 }

@@ -6,7 +6,7 @@ const addTask= async (task,weight)=>
         const res = await axios ({
 
             method:'POST',
-            url:'http://127.0.0.1:9000/api/v1/user/addTasks',
+            url:'/api/v1/user/addTasks',
             data :{
                 task,weight
                 }
