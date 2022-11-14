@@ -12,7 +12,7 @@ const optimiseTask= async ()=>
                 }
         })
 
-        console.log(res)
+        // console.log(res)
     } catch (err){console.log(err)}
 }
 document.querySelector('.form--assign').addEventListener('submit',e=>{

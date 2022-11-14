@@ -11,7 +11,7 @@ const signin= async (email,password)=>
                 email,password}
         })
 
-        console.log(res)
+        // console.log(res)
     } catch (err){console.log(err)}
 }
 document.querySelector('.form--login').addEventListener('submit',e=>{

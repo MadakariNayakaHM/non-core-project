@@ -11,7 +11,7 @@ const signup= async (name,email,staffId,phone,password,confirmPassword)=>
                 name,email,staffId,phone,password,confirmPassword}
         })
 
-        console.log(res)
+        // console.log(res)
     } catch (err){console.log(err)}
 }
 document.querySelector('.form--signUp').addEventListener('submit',e=>{

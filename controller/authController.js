@@ -144,8 +144,7 @@ exports.ristrictTo = (...roles) => {
         }
       );
       let user = await User.findById(decoded);
-      // console.log(user);
-      console.log(user.roles);
+    
       if (!roles.includes(user.roles)) {
         res.status(401).render("authorize");;
       }
@@ -199,7 +198,7 @@ let weight1;
         count+=1;
       }
     }
-    console.log(count)
+    
    if(count==0)
    {
     user.taw.push(TaskandWeight);
@@ -325,7 +324,7 @@ exports.deleteTaskAssigned = async (req,res,next)=>
 exports.searchuser=async (req,res,next)=>{
   try{
     const staffId=req.body.staffId;
-    console.log(staffId)
+   
 
     const users = await User.findOne({staffId:staffId})
   

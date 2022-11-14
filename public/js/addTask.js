@@ -12,7 +12,7 @@ const addTask= async (task,weight)=>
                 }
         })
 
-        console.log(res)
+        // console.log(res)
     } catch (err){console.log(err)}
 }
 document.querySelector('.form--add').addEventListener('submit',e=>{

@@ -72,7 +72,7 @@ exports.assignTaskPug= async (req,res,next)=>
 }
 exports.deleteTaskPug= async (req,res,next)=>
 {
-    console.log(req.body.staffId);
+    
     const users= await User.find();
     const tw=await TW.find();
     res.status(200).render("deleteTask",{users,tw});

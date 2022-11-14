@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "faculties task and weight managing web app  ",
   "main": "app.js",
+  "engines":{
+    "node":"16.14.2",
+    "npm":"8.19.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",

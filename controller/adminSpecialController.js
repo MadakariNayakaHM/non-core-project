@@ -9,8 +9,7 @@ exports.optimiseTask = async (req, res, next) => {
   
     for (i = 0; i < user.length; i++) {
       currentUser = user[i];
-      // console.log(i)
-      // console.log(currentUser.sum)
+      
       if (currentUser.sum != 0) 
       {
         for (j = i + 1; j < user.length; j++) {
@@ -36,7 +35,7 @@ exports.optimiseTask = async (req, res, next) => {
                 minWeightIndex = k;
               }
             }
-            //  console.log(minWeightIndex)
+           
           count=0;
       for(o=0;o<user[j].taw.length;o++)
       {
@@ -61,11 +60,9 @@ exports.optimiseTask = async (req, res, next) => {
               assignedOn: `${date}/${month}/${year}`,
               Active: 1,
             };
-          //   console.log(replaceTask);
+          
             user[j].taw.push(replaceTask);
             await user[j].save();
-  
-          //   console.log(minWeightIndex)
             user[j-1].taw[minWeightIndex].Active=0;
             user[j-1].taw[minWeightIndex].deletedOn = `${date}/${month}/${year}`;
             await user[j-1].save();
