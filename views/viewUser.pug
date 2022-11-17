@@ -12,57 +12,56 @@ if(users.roles=="admin")
         tr
         th(scope='col') StaffId
         th(scope='col') Name
-        th(scope='col') Phone 
         th(scope='col') Email
-        th(scope='col') view-user
+        th(scope='col') Phone 
+        
         
         each u in user
             tbody
                 tr
                 th(scope='row')=u.staffId
-                td=u.name
+                td
+                    a(href=`/user/${u.staffId}`)=u.name
                 td=u.email
                 td=u.phone
                 
-                td 
-                    a(href=`/user/${u.staffId}`) view-user
-if(users.roles=="staff")
-    table.table.align-middle 
-        thead
-        tr
-        th(scope='col') StaffId
-        th(scope='col') Name
-        th(scope='col') Phone 
-        th(scope='col') Email
-        th(scope='col') Assigned-task
-        th(scope='col') Weightage
+//- if(users.roles=="staff")
+//-     table.table.align-middle 
+//-         thead
+//-         tr
+//-         th(scope='col') StaffId
+//-         th(scope='col') Name
+//-         th(scope='col') Phone 
+//-         th(scope='col') Email
+//-         th(scope='col') Assigned-task
+//-         th(scope='col') Weightage
     
         
-        each u in user
-            tbody
-                tr
-                th(scope='row')=u.staffId
-                td=u.name
-                td=u.email
-                td=u.phone
-                td
-                    .dropdown
-                    button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                        | View assigned task
-                    .dropdown-menu(aria-labelledby='dropdownMenuButton')
-                        each ui in u.taw
-                            if(ui.Active===1)
-                                p.dropdown-item(href='#')=ui.task
+//-         each u in user
+//-             tbody
+//-                 tr
+//-                 th(scope='row')=u.staffId
+//-                 td=u.name
+//-                 td=u.email
+//-                 td=u.phone
+//-                 td
+//-                     .dropdown
+//-                     button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+//-                         | View assigned task
+//-                     .dropdown-menu(aria-labelledby='dropdownMenuButton')
+//-                         each ui in u.taw
+//-                             if(ui.Active===1)
+//-                                 p.dropdown-item(href='#')=ui.task
                             
                             
-                td
-                    .dropdown
-                    button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
-                        | View task weight
-                    .dropdown-menu(aria-labelledby='dropdownMenuButton')
-                        each ui in u.taw
-                            if(ui.Active===1)
-                                p.dropdown-item(href='#')=ui.weight
+//-                 td
+//-                     .dropdown
+//-                     button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+//-                         | View task weight
+//-                     .dropdown-menu(aria-labelledby='dropdownMenuButton')
+//-                         each ui in u.taw
+//-                             if(ui.Active===1)
+//-                                 p.dropdown-item(href='#')=ui.weight
                         
                             
             

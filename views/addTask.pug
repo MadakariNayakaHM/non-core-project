@@ -66,7 +66,7 @@ section.background-radial-gradient.overflow-hidden
               .form-outline.mb-4
                 select#staffId.form-control.form-control-lg(name='staffId' placeholder="enter task name" style='width:50%; display:block; height:auto; margin:auto')
                   each u in users 
-                    option=u.staffId
+                    option=u.name
               .form-outline.mb-4
                 select#task.form-control.form-control-lg(name='task' placeholder="enter weight"  style='width:50%; display:block; height:auto; margin:auto')
                   each t in tw

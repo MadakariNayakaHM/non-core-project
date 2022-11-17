@@ -162,7 +162,7 @@ exports.assignTaskAndWeight= async (req,res,next)=>
         const staffId=req.body.staffId;
         const task = req.body.task;
         console.log(task)
-  const user= await User.findOne({staffId:staffId})
+  const user= await User.findOne({name:staffId})
   const Task = await TW.find();
 let weight1;
   for(i=0;i<Task.length;i++)
@@ -179,6 +179,7 @@ let weight1;
             message:"invalid staff id"
         })
     }
+
     const dobj= Date.now();
     const date = new Date(dobj).getDate();
     const month=new Date(dobj).getMonth();
@@ -285,7 +286,7 @@ exports.deleteTaskAssigned = async (req,res,next)=>
   {
     const keyValue=req.body.task;
     const staffId=req.body.staffId;
-    const user = await User.findOne({staffId:staffId});
+    const user = await User.findOne({name:staffId});
     {
     
       if(!user)
@@ -341,3 +342,11 @@ exports.searchuser=async (req,res,next)=>{
     console.log(e);
   }
 }
+
+exports.logout = (req, res) => {
+  res.cookie('jwt', 'loggedout', {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true
+  });
+  res.status(200).json({ status: 'success' });
+};
