@@ -6,7 +6,8 @@ const TW = require('../models/taskWeight');
 
 
 exports.homePage= async (req,res,next)=>
-{   const cookies=req.cookies.jwt;
+{   try{
+    const cookies=req.cookies.jwt;
    if(cookies)
    {
     const userid= jwt.verify(cookies,process.env.JWT_SECRET,(err,decoded)=>{return(decoded.id)})
@@ -16,7 +17,11 @@ exports.homePage= async (req,res,next)=>
    }
 
    res.status(200).render("base");
-
+}
+catch (e)
+{
+    console.log(e)
+}
     
 }
 

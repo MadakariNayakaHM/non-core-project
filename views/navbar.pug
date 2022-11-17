@@ -37,17 +37,21 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
           li.nav-item
             a.nav-link(href='/me') about me
           li.nav-item
-            a.nav-link(href='/viewUser') View staffs
-          li.nav-item
             button.btn.btn-danger( id="logout") logout
+        if(user.roles===undefined)
+          li.nav-item.active
+            a.nav-link(href='/')
+              | Home 
+          li.nav-item
+            a.nav-link(href='/login') Sign in
+          li.nav-item(id="logout")
 
       else 
         li.nav-item.active
             a.nav-link(href='/')
               | Home 
         li.nav-item
-          a.nav-link(href='/signup') Signup 
-        li.nav-item
           a.nav-link(href='/login') Sign in
+        li.nav-item(id="logout")
       
       
