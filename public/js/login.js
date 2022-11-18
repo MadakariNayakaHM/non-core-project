@@ -20,7 +20,9 @@ document.querySelector('.form--login').addEventListener('submit',e=>{
    const password= document.getElementById('password').value;
    
 signin(email,password)
-window.alert("signin successfull")});
+window.alert("signin successfull")
+});
+
 
 
 

@@ -116,7 +116,16 @@ exports.optimiseTask= async (req,res,next)=>
 exports.getdetails= async (req,res, next)=>
 {
     const user = await User.findOne({staffId:req.params.name});
-    console.log(user);
     res.status(200).render('userOne',{user});
     next()
+}
+
+exports.getTaskList= async (req,res, next)=>
+{
+    const task= await TW.find();
+    res.status(200).render('viewTask',{task})
+}
+exports.deleteTaskList= async (req,res,next)=>
+{   const task= await TW.find();
+    res.status(200).render('deleteTaskList',{task})
 }

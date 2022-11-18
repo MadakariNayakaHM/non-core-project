@@ -19,7 +19,9 @@ logoutBtn.addEventListener('click',e=>{
   
    
 logout()
-window.alert("loged out  successfuly")});
+window.alert("loged out  successfuly")
+});
+
 
 
 

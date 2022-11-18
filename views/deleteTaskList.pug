@@ -48,37 +48,39 @@ section.background-radial-gradient.overflow-hidden
   .container.px-4.py-5.px-md-5.text-center.text-lg-start.my-5
     .row.gx-lg-5.align-items-center.mb-5
       .col-lg-6.mb-5.mb-lg-0(style='z-index: 10')
-        h1.my-5.display-5.fw-bold.ls-tight(style='color: hsl(218, 81%, 95%)')
-          | Update the weightage  
+        
+        
+       h1.my-5.display-5.fw-bold.ls-tight(style='color: hsl(218, 81%, 95%)')
+          | Remove the   
           br
-          span(style='color: hsl(218, 81%, 75%)')  of the tasks
-        p.mb-4.opacity-70(style='color: hsl(218, 81%, 85%)')
+          span(style='color: hsl(218, 81%, 75%)')  tasks from your list
+       p.mb-4.opacity-70(style='color: hsl(218, 81%, 85%)')
           | Lorem ipsum dolor, sit amet consectetur adipisicing elit.
           | Temporibus, expedita iusto veniam atque, magni tempora mollitia
           | dolorum consequatur nulla, neque debitis eos reprehenderit quasi
           | ab ipsum nisi dolorem modi. Quos?
-        
+          
       .col-lg-6.mb-5.mb-lg-0.position-relative
         #radius-shape-1.position-absolute.rounded-circle.shadow-5-strong
         #radius-shape-2.position-absolute.shadow-5-strong
         .card.bg-glass
           .card-body.px-4.py-5.px-md-5
-            form(class="form--add")
+            form(class="form--remove--list")
               
               .form-outline.mb-4
-                select#task.form-control.form-control-lg(name='task' placeholder="enter weight"  style='width:50%; display:block; height:auto; margin:auto')
-                  each t in task
+                select#task.form-control.form-control-lg(name='task'  style='width:50%; display:block; height:auto; margin:auto')
+                  each t in task 
                     option=t.task
-        
-              .form-outline.mb-4
-                input#weight.form-control.form-control-lg(type="number" name='weight' placeholder="enter weight" style='width:50%; display:block; height:auto; margin:auto')
+                
                   
-              
               button.btn.btn-primary.btn-block.mb-4(type='submit')
-                | update
+  
+  
+                | Remove
+              
 // Section: Design Block
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
 script(src='https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
-script(src="/js/updateWeight.js")
+script(src="/js/deleteTaskList.js")
 script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js')

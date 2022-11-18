@@ -1,6 +1,6 @@
 
 
-const assignTask= async (staffId,task)=>
+const assignTask= async (name,task)=>
 {
     try{
         const res = await axios ({
@@ -8,7 +8,7 @@ const assignTask= async (staffId,task)=>
             method:'PATCH',
             url:'/api/v1/user/assignTandW',
             data :{
-                staffId,task
+                name,task
                 }
         })
 
@@ -17,11 +17,11 @@ const assignTask= async (staffId,task)=>
 }
 document.querySelector('.form--assign').addEventListener('submit',e=>{
     e.preventDefault();
-   const staffId= document.getElementById('staffId').value;
+   const name= document.getElementById('name').value;
    const task= document.getElementById('task').value;
   
    
-assignTask(staffId,task)
+assignTask(name,task)
 window.alert("assigned successfully")});
 
 

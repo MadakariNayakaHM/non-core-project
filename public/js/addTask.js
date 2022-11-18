@@ -23,7 +23,7 @@ document.querySelector('.form--add').addEventListener('submit',e=>{
    
 const weight1=parseInt(weight);
 addTask(task,weight1)
-window.alert("assigned successfully")});
+window.alert("added successfully")});
 
 
 

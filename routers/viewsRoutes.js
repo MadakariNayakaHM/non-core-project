@@ -12,7 +12,9 @@ router.route('/assign').get(authController.protect,authController.ristrictTo("ad
 router.route('/remove').get(authController.protect,authController.ristrictTo("admin"),viewController.deleteTaskPug);
 router.route('/graph').get(authController.protect,authController.ristrictTo("admin"),viewController.graphPug);
 router.route('/addTask').get(authController.protect,authController.ristrictTo("admin"),viewController.addTaskList);
-router.route('/updateWeight').get(authController.protect,authController.ristrictTo("admin"),viewController.updateWeight);
 router.route('/optimise').get(authController.ristrictTo("admin"),viewController.optimiseTask);
 router.route('/user/:name').get(authController.ristrictTo("admin"),viewController.getdetails);
+router.route('/viewTask').get(authController.ristrictTo("admin"),viewController.getTaskList);
+router.route('/updateWeight').get(authController.protect,authController.ristrictTo("admin"),viewController.updateWeight);
+router.route('/deleteTaskList').get(authController.protect,authController.ristrictTo("admin"),viewController.deleteTaskList)
 module.exports=router;

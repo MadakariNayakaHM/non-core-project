@@ -145,7 +145,7 @@ exports.ristrictTo = (...roles) => {
       );
       let user = await User.findById(decoded);
     
-      if (!roles.includes(user.roles)) {
+      if (!roles.includes(user.roles)||!user) {
         res.status(401).render("authorize");;
       }
       next();
@@ -159,17 +159,18 @@ exports.assignTaskAndWeight= async (req,res,next)=>
 {
     try
     {
-        const staffId=req.body.staffId;
+        const name=req.body.name;
         const task = req.body.task;
-        console.log(task)
-  const user= await User.findOne({name:staffId})
+       
+  const user= await User.findOne({name:name})
+ 
   const Task = await TW.find();
-let weight1;
+  let weight1;
   for(i=0;i<Task.length;i++)
   {
-    if(Task[i].task==task)
+    if(Task[i].task==task && Task[i].status==1)
       weight1=Task[i].weight;
-    
+        
   }
  
     if(!user)
@@ -191,10 +192,10 @@ let weight1;
       assignedOn:`${date}/${month}/${year}`,
       Active:1
     }
-    count=0;
+    let count=0;
     for(i=0;i<user.taw.length;i++)
     {
-      if(user.taw[i].task==task && user.taw[i].Active==1)
+      if(user.taw[i].task===task && user.taw[i].Active===1)
       {
         count+=1;
       }
