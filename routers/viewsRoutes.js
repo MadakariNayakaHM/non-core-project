@@ -19,4 +19,5 @@ router.route('/updateWeight').get(authController.protect,authController.ristrict
 router.route('/deleteTaskList').get(authController.protect,authController.ristrictTo("admin"),viewController.deleteTaskList)
 router.route('/specialAdminControl').get(authController.ristrictTo("admin"),viewController.specialAdminControl)
 router.route('/removeUser').get(authController.ristrictTo('admin'),viewController.removeUser)
+router.route('/updateUser/:id').get(viewController.updateUser)
 module.exports=router;

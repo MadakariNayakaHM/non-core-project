@@ -138,3 +138,7 @@ exports.removeUser=async(req,res)=>
 {  const users= await User.find()
     res.status(200).render('removeUser',{users})
 }
+exports.updateUser=async (req,res,next)=>
+{  const user= await User.findById(req.params.id)
+    res.status(200).render('updateUser' ,{user})
+}

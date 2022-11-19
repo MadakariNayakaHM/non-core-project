@@ -12,4 +12,5 @@ router.route('/viewUsers').get(authController.protect,authController.ristrictTo(
 router.route('/aboutMe').get(authController.protect,authController.aboutMe);
 router.route('/searchuser').post(authController.searchuser);
 router.route('/removeUser').patch(authController.ristrictTo('admin'),authController.removeUser);
+router.route('/updateUser').patch(authController.updateUser);
 module.exports = router;

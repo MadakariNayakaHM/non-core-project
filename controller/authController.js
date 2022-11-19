@@ -5,7 +5,7 @@ const util=require('util');
 const { promisify } = require("util");
 const crypto=require('crypto');
 const { json } = require("express/lib/response");
-const { remove } = require("./../models/userTandW");
+const { remove, findByIdAndUpdate, findById, findOne } = require("./../models/userTandW");
 const Email= require('../email');
 
 
@@ -360,4 +360,10 @@ exports.removeUser= async (req,res,next)=>
 weight:0,
 Active:0}]
 user.save()
+}
+exports.updateUser=async (req,res,next)=>
+{
+  const staffId=req.body.oldStaffId;
+  await User.findByIdAndUpdate(staffId,{name:req.body.name, email:req.body.email, phone:req.body.phone, staffId:req.body.staffId},{new:true,runValidators:true})
+  res.status(200).json({status:"success"})
 }
