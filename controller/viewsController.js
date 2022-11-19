@@ -129,3 +129,12 @@ exports.deleteTaskList= async (req,res,next)=>
 {   const task= await TW.find();
     res.status(200).render('deleteTaskList',{task})
 }
+
+exports.specialAdminControl= async(req,res)=>
+{
+    res.status(200).render('specialAdminControl')
+}
+exports.removeUser=async(req,res)=>
+{  const users= await User.find()
+    res.status(200).render('removeUser',{users})
+}

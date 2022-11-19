@@ -18,12 +18,13 @@ if(users.roles=="admin")
         
         each u in user
             tbody
-                tr
-                th(scope='row')=u.staffId
-                td
-                    a(href=`/user/${u.staffId}`)=u.name
-                td=u.email
-                td=u.phone
+                if(u.status==1)
+                    tr
+                        th(scope='row')=u.staffId
+                        td
+                            a(href=`/user/${u.staffId}`)=u.name
+                        td=u.email
+                        td=u.phone
                 
 //- if(users.roles=="staff")
 //-     table.table.align-middle 

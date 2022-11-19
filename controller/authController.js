@@ -351,3 +351,13 @@ exports.logout = (req, res) => {
   });
   res.status(200).json({ status: 'success' });
 };
+exports.removeUser= async (req,res,next)=>
+{
+  const name = req.body.name;
+  const user= await User.findOne({name:name});
+  user.status=0
+  user.taw=[{task:"no task allocated",
+weight:0,
+Active:0}]
+user.save()
+}

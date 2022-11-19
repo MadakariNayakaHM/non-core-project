@@ -66,11 +66,13 @@ section.background-radial-gradient.overflow-hidden
               .form-outline.mb-4
                 select#staffId.form-control.form-control-lg(name='staffId' style='width:50%; display:block; height:auto; margin:auto')
                   each u in users 
-                    option=u.name
+                    if(u.status==1)
+                      option=u.name
               .form-outline.mb-4
                 select#task.form-control.form-control-lg(name='task' style='width:50%; display:block; height:auto; margin:auto')
                   each t in tw
-                    option=t.task
+                    if(t.status==1)
+                      option=t.task
               
               button.btn.btn-primary.btn-block.mb-4(type='submit')
                 | Remove

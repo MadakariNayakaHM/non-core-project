@@ -5,4 +5,6 @@ const router = express.Router();
 router.route('/addTasks').post(authController.ristrictTo('admin'),twController.addTasks);
 router.route('/updateWeight').patch(authController.ristrictTo('admin'),twController.updateWeight);
 router.route('/deleteTaskList').patch(authController.ristrictTo("admin"),twController.deleteTaskList);
+router.route('/deleteAllTasks').patch(authController.ristrictTo("admin"), twController.deleteAllTask);
+router.route('/deleteAllUserTasks').patch(authController.ristrictTo("admin"),twController.deleteAllUserTasks);
 module.exports = router;

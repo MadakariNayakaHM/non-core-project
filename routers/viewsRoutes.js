@@ -17,4 +17,6 @@ router.route('/user/:name').get(authController.ristrictTo("admin"),viewControlle
 router.route('/viewTask').get(authController.ristrictTo("admin"),viewController.getTaskList);
 router.route('/updateWeight').get(authController.protect,authController.ristrictTo("admin"),viewController.updateWeight);
 router.route('/deleteTaskList').get(authController.protect,authController.ristrictTo("admin"),viewController.deleteTaskList)
+router.route('/specialAdminControl').get(authController.ristrictTo("admin"),viewController.specialAdminControl)
+router.route('/removeUser').get(authController.ristrictTo('admin'),viewController.removeUser)
 module.exports=router;

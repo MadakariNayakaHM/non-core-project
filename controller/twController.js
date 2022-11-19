@@ -63,3 +63,60 @@ exports.deleteTaskList= async (req,res,next)=>
 
 
 }
+
+exports.deleteAllTask=async (req,res,next)=>
+{
+    const tasks= await TW.find()
+    const users= await User.find()
+    for(i=0;i<tasks.length;i++)
+    {
+        if(tasks[i].status==1)
+        {   const task= tasks[i].task;
+            tasks[i].status=0
+            tasks[i].save()
+
+            // for(j=0;j<users.length;j++)
+            // {
+            //     if(users[j].status==1)
+            //     {
+            //         for(k=0;k<users[j].taw.length;k++)
+            //         {
+            //             if(users[j].taw[k].task==task && users[j].taw[k].Active==1)
+            //             {
+            //                 users[j].taw[k].Active=0
+            //                 users[j].taw[k].save()
+                            
+            //             }
+            //         }
+
+                   
+            //     }
+            // }
+        }
+    }
+
+    for(i=0;i<users.length;i++)
+    {
+        users[i].taw=[{task:"no task allocated",
+    weight:0,
+    Active:0
+
+}]
+users[i].save()
+    }
+}
+
+module.exports.deleteAllUserTasks=async (req,res,next)=>
+{
+    const users=await User.find()
+    for(i=0;i<users.length;i++)
+    {
+        
+        users[i].taw=[{task:"no task allocated",
+    weight:0,
+    Active:0
+
+}]
+            users[i].save()
+        }
+    }
