@@ -68,7 +68,8 @@ section.background-radial-gradient.overflow-hidden
               .form-outline.mb-4
                 select#task.form-control.form-control-lg(name='task' placeholder="enter weight"  style='width:50%; display:block; height:auto; margin:auto')
                   each t in task
-                    option=t.task
+                   if(t.status==1)
+                      option=t.task
         
               .form-outline.mb-4
                 input#weight.form-control.form-control-lg(type="number" name='weight' placeholder="enter weight" style='width:50%; display:block; height:auto; margin:auto')
