@@ -11,7 +11,15 @@ exports.addTasks=async (req,res,next)=>
 
 exports.updateWeight= async (req,res,next)=>
 {
-    const task = await TW.findOne({task:req.body.task});
+    const tasks = await TW.find();
+    let task;
+    for(i=0;i<tasks.length;i++)
+    {
+        if(tasks[i].task==req.body.task && tasks[i].status==1)
+        {
+            task=tasks[i];
+        }
+    }
     const updatedTask= await TW.findByIdAndUpdate(task._id,req.body,{new:true,runValidators:true})
   
     const user= await User.find();
@@ -21,7 +29,7 @@ exports.updateWeight= async (req,res,next)=>
         
         for(j=0;j<user[i].taw.length;j++)
         {
-            if(user[i].taw[j].task==req.body.task)
+            if(user[i].taw[j].task==req.body.task &&user[i].taw[j].Active==1)
               {
                   user[i].taw[j].weight=updatedTask.weight;
                     user[i].save();
@@ -39,7 +47,12 @@ exports.updateWeight= async (req,res,next)=>
 
 exports.deleteTaskList= async (req,res,next)=>
 {
-    const task = await TW.findOne({task:req.body.task});
+    const tasks = await TW.find();
+    let task
+    for(i=0;i<tasks.length;i++)
+    {
+        if(tasks[i].task==req.body.task && tasks[i].status==1)
+    }
    await TW.findByIdAndUpdate(task._id,{status:0},{new:true,runValidators:true})
     const user= await User.find();
     const tw= await TW.find();
