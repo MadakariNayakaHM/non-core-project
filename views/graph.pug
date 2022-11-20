@@ -32,7 +32,7 @@ include navbar
   each u in users
     if(u.status==1)
       .col.ml-2
-        p(class="verticaltext")=u.name
+        p(class="verticaltext")=u.name.split(" ")[0]
         .progress.progress-bar-vertical
           .progress-bar(role='progressbar' aria-valuenow=`${u.sum}` aria-valuemin='0' aria-valuemax='100' style=`height:${u.sum}%`)
         p=u.sum
