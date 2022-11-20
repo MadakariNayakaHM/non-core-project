@@ -53,7 +53,7 @@ exports.deleteTaskList= async (req,res,next)=>
     {
         if(tasks[i].task==req.body.task && tasks[i].status==1)
         {
-            task=task[i];
+            task=tasks[i];
         }
     }
    await TW.findByIdAndUpdate(task._id,{status:0},{new:true,runValidators:true})
