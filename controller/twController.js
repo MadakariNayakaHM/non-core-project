@@ -54,8 +54,10 @@ exports.deleteTaskList= async (req,res,next)=>
         if(tasks[i].task==req.body.task && tasks[i].status==1)
         {
             task=tasks[i];
+            console.log(task);
         }
     }
+    
    await TW.findByIdAndUpdate(task._id,{status:0},{new:true,runValidators:true})
     const user= await User.find();
     const tw= await TW.find();
