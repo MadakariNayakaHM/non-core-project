@@ -5,13 +5,17 @@ const User=require('./../models/userTandW');
 
 exports.addTasks=async (req,res,next)=>
 {
-    const task = await TW.create(req.body);
+    try{
+        const task = await TW.create(req.body);
     res.status(200).json({status:"success",data:{task}})
+    }
+    catch(e){console.log(e)}
 }
 
 exports.updateWeight= async (req,res,next)=>
 {
-    const tasks = await TW.find();
+    try{
+        const tasks = await TW.find();
     let task;
     for(i=0;i<tasks.length;i++)
     {
@@ -40,6 +44,7 @@ exports.updateWeight= async (req,res,next)=>
     }
    
     res.status(200).json({status:"success",data:{updatedTask}});
+    }catch(e){console.log(e)}
 
 
 
@@ -47,7 +52,7 @@ exports.updateWeight= async (req,res,next)=>
 
 exports.deleteTaskList= async (req,res,next)=>
 {
-    const tasks = await TW.find();
+   try{ const tasks = await TW.find();
     let task
     for(i=0;i<tasks.length;i++)
     {
@@ -76,7 +81,7 @@ exports.deleteTaskList= async (req,res,next)=>
         }
     }
    
-    res.status(200).json({status:"success"});
+    res.status(200).json({status:"success"});}catch(e){console.log(e)}
 
 
 
@@ -84,7 +89,7 @@ exports.deleteTaskList= async (req,res,next)=>
 
 exports.deleteAllTask=async (req,res,next)=>
 {
-    const tasks= await TW.find()
+try{    const tasks= await TW.find()
     const users= await User.find()
     for(i=0;i<tasks.length;i++)
     {
@@ -121,11 +126,12 @@ exports.deleteAllTask=async (req,res,next)=>
 
 }]
 users[i].save()
-    }
+    }}catch(e){console.log(e)}
 }
 
 module.exports.deleteAllUserTasks=async (req,res,next)=>
 {
+   try{
     const users=await User.find()
     for(i=0;i<users.length;i++)
     {
@@ -137,4 +143,5 @@ module.exports.deleteAllUserTasks=async (req,res,next)=>
 }]
             users[i].save()
         }
+   }catch(e){console.log(e)}
     }
