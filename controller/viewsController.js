@@ -10,16 +10,29 @@ exports.homePage= async (req,res,next)=>
     const cookies=req.cookies.jwt;
    if(cookies)
    {
-    const userid= jwt.verify(cookies,process.env.JWT_SECRET,(err,decoded)=>{return(decoded.id)})
+    let userid;
+    try{
+        userid= jwt.verify(cookies,process.env.JWT_SECRET,(err,decoded)=>{return(decoded.id)})
+    }
+    catch(e)
+    {
+        console.log(e)
+    }
+    console.log(userid)
     if(userid)
     {
         const user= await User.findById(userid);
-    res.status(200).render("base",{cookies,user});
+        console.log(user)
+    res.status(200).render("base",{user});
+    }
+    else
+    {
+        res.status(200).render("login");
     }
 
    }
 
-   res.status(200).render("base");
+   
 }
 catch (e)
 {
