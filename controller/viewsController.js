@@ -11,8 +11,11 @@ exports.homePage= async (req,res,next)=>
    if(cookies)
    {
     const userid= jwt.verify(cookies,process.env.JWT_SECRET,(err,decoded)=>{return(decoded.id)})
-    const user= await User.findById(userid);
+    if(userid)
+    {
+        const user= await User.findById(userid);
     res.status(200).render("base",{cookies,user});
+    }
 
    }
 
