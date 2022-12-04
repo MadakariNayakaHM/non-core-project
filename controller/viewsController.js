@@ -18,11 +18,11 @@ exports.homePage= async (req,res,next)=>
     {
         console.log(e)
     }
-    console.log(userid)
+    
     if(userid)
     {
         const user= await User.findById(userid);
-        console.log(user)
+        
     res.status(200).render("base",{user});
     }
     else
