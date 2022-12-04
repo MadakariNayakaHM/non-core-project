@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const pug = require('pug');
 const htmlToText = require('html-to-text');
-
+// added something
 module.exports = class Email {
   constructor(user, url) {
     this.to = user.email;
