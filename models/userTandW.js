@@ -35,6 +35,11 @@ const userSchema=mongoose.Schema({
             assignedOn:String,
             deletedOn:String,
             Active:Number,
+            status:{
+              type:String,
+              default:"On going",
+              enum:["On going", "Completed"]
+            }
         }],
         default:[{task:"no tasks allocated",weight:0,Active:0}],
     },
@@ -51,7 +56,6 @@ const userSchema=mongoose.Schema({
     },
     confirmPassword: {
         type: String,
-        // required: [true, "you must confirm password"],
         validate: {
           validator: function (el) {
             return el === this.password;
@@ -62,6 +66,10 @@ const userSchema=mongoose.Schema({
     sum:{
       type:Number,
       default:0
+    },
+    chat:{
+      type:[{message:String,
+      status:Number}]
     }
 
 })

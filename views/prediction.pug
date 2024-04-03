@@ -1,0 +1,36 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+  style.
+    .weight {
+      border-radius: 100%;
+      width: 200px;
+      height: auto;
+      display: block;
+      margin: auto;
+      background-color: rgb(208, 233, 12 );
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+  title view-task
+
+include navbar
+table.table.table-responsive-sm.table-responsive-lg.table-dark.table-striped.mt-5.align-middle
+  thead
+    tr
+      th(scope='col') User Name
+      th(scope='col') Cumilative Sum
+      th(scope='col') Load Status
+  tbody
+    if users && users.length > 0
+      each user, index in users
+        tr(scope='row')
+          td= user.name
+          td= user.sum
+          td= `${predictions[index]===1?"Can be assigned":"Loaded"}`
+    else
+      tr
+        td(colspan="3") No users found

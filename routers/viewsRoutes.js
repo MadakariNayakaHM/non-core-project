@@ -1,6 +1,7 @@
 const express = require('express');
 const authController=require('./../controller/authController');
 const viewController=require('./../controller/viewsController');
+const predictionController = require('../controller/predictionController');
 const router = express.Router();
 
 router.route('/').get(viewController.homePage);
@@ -20,4 +21,5 @@ router.route('/deleteTaskList').get(authController.protect,authController.ristri
 router.route('/specialAdminControl').get(authController.ristrictTo("admin"),viewController.specialAdminControl)
 router.route('/removeUser').get(authController.ristrictTo('admin'),viewController.removeUser)
 router.route('/updateUser/:id').get(viewController.updateUser)
+router.route('/predict').get(predictionController.predictions);
 module.exports=router;

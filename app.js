@@ -17,4 +17,3 @@ app.use('/api/v1/admin',adminSpecialRoutes);
 const twRoutes=require('./routers/twRoutes');
 app.use('/api/v1/user',twRoutes);
 module.exports=app;
-// checked
