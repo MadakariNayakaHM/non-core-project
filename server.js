@@ -16,4 +16,4 @@ console.log(`app is in ${process.env.NODE_ENV} mode`);
 
 
 const app =require('./app');
-app.listen(port,()=>{console.log(`app is running at the port ${port}`)})
+app.listen(port,'0.0.0.0',()=>{console.log(`app is running at the port ${port}`)})
