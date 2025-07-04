@@ -55,7 +55,7 @@ exports.signUp = async (req, res, next) => {
 
     const token = signToken(newUser._id);
     const url=`${req.protocol}://${req.get('host')}/login`
-    await new Email(newUser,url).sendWelcome();
+    // await new Email(newUser,url).sendWelcome();
     
     res
       .status(201)
