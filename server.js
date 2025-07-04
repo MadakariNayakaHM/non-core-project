@@ -1,7 +1,7 @@
 const dotenv= require('dotenv');
 const mongoose=require('mongoose');
 dotenv.config({path:'./config.env'});
-const port=process.env.PORT;
+const port=process.env.PORT || 3000;
 const DB=process.env.DATABASE;
 const DB2=process.env.DATABASE2;
 console.log(`app is in ${process.env.NODE_ENV} mode`);
@@ -16,4 +16,4 @@ console.log(`app is in ${process.env.NODE_ENV} mode`);
 
 
 const app =require('./app');
-app.listen(port,'0.0.0.0',()=>{console.log(`app is running at the port ${port}`)})
+app.listen(process.env.PORT,'0.0.0.0',()=>{console.log(`app is running at the port ${port}`)})
